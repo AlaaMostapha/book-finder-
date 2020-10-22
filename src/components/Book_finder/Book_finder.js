@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 function BookFinder() {
   return (
     <div className="BookFinder">
-        <h1>Search for book</h1>
+        <h1>Search for book </h1>
         <TextField id="outlined-basic" label="Outlined" variant="outlined" />
         <Button variant="contained" color="primary">
             Search
