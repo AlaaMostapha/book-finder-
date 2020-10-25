@@ -1,4 +1,4 @@
-import { call, put } from 'redux-saga/effects';
+import { call } from 'redux-saga/effects';
 import {getBooks} from '../../axios/api/book_api'
 // const HN_BASE_URL = 'http://hn.algolia.com/api/v1/search?query=';
  
@@ -8,7 +8,7 @@ import {getBooks} from '../../axios/api/book_api'
  
 function* handlGetBooks(action) {
   console.log(action.payload)
-  const response =  yield call(getBooks,action.payload)
+  const response =  yield call(getBooks,action.payload.value)
   console.log(response);
 }
  

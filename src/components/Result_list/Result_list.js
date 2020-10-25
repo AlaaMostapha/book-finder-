@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {getBooks} from '../../redux/actions/index';
 import './Result_list.scss';
+
+
 class ResultList extends Component {
     // constructor(props){
     //     super(props);
@@ -11,6 +13,7 @@ class ResultList extends Component {
     //     console.log(this.props)
     //     this.props.getBooks();
     // }
+    
     
     render() { 
         return ( 

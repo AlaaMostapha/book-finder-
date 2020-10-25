@@ -1,4 +1,4 @@
-import React ,{useState}from "react";
+import React from "react";
 
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -6,11 +6,9 @@ import TextField from "@material-ui/core/TextField";
 // import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import "./Book_finder.scss";
-// const useStyles = makeStyles({
-//   btn: {
-//     margin:'10px',
-//   },
-// });
+import store from '../../redux/store/store';
+import  { GET_BOOKS_REUEST,BOOKS_RESPONSE} from '../../constants/actionTypes';
+
 const SearchSchema = Yup.object().shape({
   search: Yup.string()
     .required("Search is required")
@@ -21,17 +19,14 @@ const initialValues = {
 };
 
 function BookFinder() {
-  // let [search,setSearch]=useState("");
-
-  // const handleChange =(e)=>{
-  //   // console.log(e.target.value);
-  //   search=e.target.value;
-  //   setSearch(search)
-  //   console.log(search)
-  // }
- 
   const submitForm = (values) => {
-    console.log(values)
+    console.log(values);
+    store.dispatch({
+      type:GET_BOOKS_REUEST,
+      payload:{
+        value:values.search
+      }
+    })
   };
   const renderForm = (props) =>{
     console.log(props);
@@ -47,7 +42,6 @@ function BookFinder() {
                     name="search"
                     id="search"
                     autoComplete="off"
-                    // value={values.search}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     className={
@@ -55,14 +49,14 @@ function BookFinder() {
                     }
                   />
                   <div>
-                    {/* <ErrorMessage
+                    <ErrorMessage
                       name="search"
                       component="span"
                       className="error"
-                    /> */}
-                    {errors.search &&(
+                    />
+                    {/* {errors.search &&(
                       <div>{errors.search}</div>
-                    )}
+                    )} */}
                   </div>
                   <div>
                     <Button
@@ -70,8 +64,8 @@ function BookFinder() {
                       variant="contained"
                       color="primary"
                       // className={classes.btn}
-                      // className={dirty && isValid ? "" : "disabled-btn"}
-                      // disabled={!(dirty && isValid)}
+                      className={dirty && isValid ? "" : "disabled-btn"}
+                      disabled={!(dirty && isValid)}
                     >
                       Search
                     </Button>
