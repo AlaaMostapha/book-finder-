@@ -1,0 +1,2 @@
+export const GET_BOOKS_FROM_STORE='GET_BOOKS';
+export const ADD_BOOKS_TO_STORE='GET_BOOKS';
