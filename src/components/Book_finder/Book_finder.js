@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState}from "react";
 
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -19,31 +19,25 @@ const SearchSchema = Yup.object().shape({
 const initialValues = {
   search: "",
 };
-const submitForm = (values) => {
-  console.log(values);
-};
+
 function BookFinder() {
-  // const classes = useStyles();
-  return (
-    <div className="BookFinder">
-      <Formik
-        initialValues={initialValues}
-        validationSchema={SearchSchema}
-        onSubmit={submitForm}
-      >
-        {(formik) => {
-          const {
-            values,
-            handleChange,
-            handleSubmit,
-            errors,
-            touched,
-            handleBlur,
-            isValid,
-            dirty,
-          } = formik;
-          return (
-            <div className="container">
+  // let [search,setSearch]=useState("");
+
+  // const handleChange =(e)=>{
+  //   // console.log(e.target.value);
+  //   search=e.target.value;
+  //   setSearch(search)
+  //   console.log(search)
+  // }
+ 
+  const submitForm = (values) => {
+    console.log(values)
+  };
+  const renderForm = (props) =>{
+    console.log(props);
+    const {handleSubmit,handleChange,touched,handleBlur,isValid,dirty,errors} = props;
+    return(
+      <div className="container">
               <h1>Search for your Book</h1>
               <Form onSubmit={handleSubmit}>
                 <div className="form-row">
@@ -53,7 +47,7 @@ function BookFinder() {
                     name="search"
                     id="search"
                     autoComplete="off"
-                    value={values.search}
+                    // value={values.search}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     className={
@@ -61,11 +55,14 @@ function BookFinder() {
                     }
                   />
                   <div>
-                    <ErrorMessage
+                    {/* <ErrorMessage
                       name="search"
                       component="span"
                       className="error"
-                    />
+                    /> */}
+                    {errors.search &&(
+                      <div>{errors.search}</div>
+                    )}
                   </div>
                   <div>
                     <Button
@@ -73,8 +70,8 @@ function BookFinder() {
                       variant="contained"
                       color="primary"
                       // className={classes.btn}
-                      className={dirty && isValid ? "" : "disabled-btn"}
-                      disabled={!(dirty && isValid)}
+                      // className={dirty && isValid ? "" : "disabled-btn"}
+                      // disabled={!(dirty && isValid)}
                     >
                       Search
                     </Button>
@@ -82,11 +79,22 @@ function BookFinder() {
                 </div>
               </Form>
             </div>
-          );
-        }}
+    )
+  }
+
+  return (
+    <div className="BookFinder">
+      <Formik
+        initialValues={initialValues}
+        validationSchema={SearchSchema}
+        onSubmit={submitForm}
+      >
+        {(props) => renderForm(props)}
       </Formik>
     </div>
   );
 }
 
 export default BookFinder;
+
+
