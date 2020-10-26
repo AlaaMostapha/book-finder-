@@ -1,10 +1,9 @@
 import React,{Suspense} from 'react';
-import './App.css';
+import './App.scss';
 import BookFinder from '../Book_finder/Book_finder';
-import List from '../Result_list/Result_list.js';
 import { Provider } from 'react-redux';
 import store from '../../redux/store/store'
-// const LazyResultListComponent = React.lazy(()=>import('../Result_list/Result_list.js'));
+const LazyResultListComponent = React.lazy(()=>import('../Result_list/Result_list.js'));
 
 function App() {
   return (
@@ -13,7 +12,7 @@ function App() {
      
       <Suspense fallback={<div>Loading...</div>}>
          <BookFinder/>
-        <List/>
+        <LazyResultListComponent/>
       </Suspense>
    
     </div>
