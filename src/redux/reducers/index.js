@@ -1,15 +1,25 @@
-import  { GET_BOOKS_REUEST,BOOKS_RESPONSE} from '../../constants/actionTypes'
-// import 
-export default function reducer(state, action) {
+import * as actionTypes from '../../constants/actionTypes';
+
+const INITIAL_STATE = [];
+export default function reducer(state=INITIAL_STATE, action) {
   switch(action.type) {
-    case GET_BOOKS_REUEST : {
-      console.log(action)
-      return state;
+    case actionTypes.BOOKS_REUEST : {
+      console.log(action,state)
+      return [
+        ...state,
+        {
+          payload:action.payload
+        }
+      ]
     }
-    case BOOKS_RESPONSE : {
-      // do something and return new state
-      //  return applySearch(state, action);
-      return state;
+    case actionTypes.BOOKS_RESPONSE : {
+      
+      return [
+        ...state,
+        {
+          payload:action.payload.value
+        }
+      ];
     }
    
     default : return state;
