@@ -1,11 +1,15 @@
-import {GET_BOOKS_REUEST,BOOKS_RESPONSE} from '../../constants/actionTypes';
+import * as actionTypes from '../../constants/actionTypes';
 
-export const getBooks = (payload) => ({
-    type: GET_BOOKS_REUEST,
-    payload 
+export const getBooks = value => ({
+    type:actionTypes.BOOKS_REUEST,
+    payload:{
+        value
+    }
 });
 
-export const addBooks = (payload) => ({
-    type: BOOKS_RESPONSE,
-    payload
+export const addBooks = response => ({
+    type: actionTypes.BOOKS_RESPONSE,
+    payload:{
+        response
+    }
 });
