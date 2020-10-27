@@ -10,6 +10,6 @@ export const getBooks = value => ({
 export const addBooks = response => ({
     type: actionTypes.BOOKS_RESPONSE,
     payload:{
-        response
+        value:response
     }
 });
