@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {getBooks} from '../../redux/actions/index';
 import './Result_list.scss';
-
+import store from '../../redux/store/store';
+import * as actions from '../../redux/actions/index';
 
 class ResultList extends Component {
     // constructor(props){
     //     super(props);
 
     // }
-    // componentDidMount=()=>{
-    //     console.log(this.props)
-    //     this.props.getBooks();
-    // }
+    componentDidMount=()=>{
+         store.dispatch(actions.addBooks());
+         console.log(actions.addBooks());
+         console.log(store.getState())
+    }
     
     
     render() { 
@@ -23,7 +23,4 @@ class ResultList extends Component {
          );
     }
 }
-export default connect(
-  null,
-  getBooks,
-)(ResultList);
+export default ResultList;

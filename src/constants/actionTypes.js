@@ -1,2 +1,2 @@
-export const GET_BOOKS_REUEST='GET_BOOKS';
-export const BOOKS_RESPONSE='GET_BOOKS';
+export const BOOKS_REUEST='BOOKS_REUEST';
+export const BOOKS_RESPONSE='BOOKS_RESPONSE';
