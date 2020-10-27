@@ -10,9 +10,9 @@ import {addBooks} from '../actions/index'
 function* handlGetBooks(action) {
   console.log(action)
   const response =  yield call(getBooksFromApi,action.payload)
-  console.log(response);
+  // console.log(response);
    console.log(response.data);
-  // yield put(addBooks(response.data));
+   yield put(addBooks(response.data));
 }
  
 export {
