@@ -9,9 +9,9 @@ function App() {
   return (
     <Provider store={store}>
     <div className="App">
-     
-      <Suspense fallback={<div>Loading...</div>}>
-         <BookFinder/>
+      <BookFinder/>
+      <Suspense fallback={<div>Loading.......</div>}>
+        
         <LazyResultListComponent/>
       </Suspense>
    

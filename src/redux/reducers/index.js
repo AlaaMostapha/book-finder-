@@ -5,19 +5,19 @@ export default function reducer(state=INITIAL_STATE, action) {
   switch(action.type) {
     case actionTypes.BOOKS_REUEST : {
       console.log(action,state)
-      return [
+      return (
         {
-          payload:action.payload
+          value:action.payload.value
         }
-      ]
+      )
     }
     case actionTypes.BOOKS_RESPONSE : {
       console.log(action,state)
-      return [
+      return (
         {
-          books:action.payload
+          books:action.payload.books
         }
-      ];
+      );
     }
    
     default : return state;
