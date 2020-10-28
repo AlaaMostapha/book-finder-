@@ -12,3 +12,21 @@
 // const store = createStore(reducers, enhancer);
 // saga.run(watchSagas);
 // export default store;
+
+ // function load(){
+  //   // store.dispatch(actions.addBooks());
+  //   // console.log(actions.addBooks());
+  //   // console.log(store.getState())
+  //   // console.log(props.books)
+  //    console.log( props.books)
+  //    props.addBooks();
+  //    console.log()
+  //     console.log( props)
+  // } 
+  const submitForm = (values) => {
+    //onsubmit dipatch get books action
+    // store.dispatch(actions.getBooks(values.search));
+    // console.log(store.getState());
+    console.log(props)
+    props.getBooks(values.search)
+  };

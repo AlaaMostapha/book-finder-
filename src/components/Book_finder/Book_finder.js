@@ -7,8 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import Grid from '@material-ui/core/Grid';
 import "./Book_finder.scss";
-import store from '../../redux/store/store';
-import * as actions from '../../redux/actions/index';
+import {connect} from 'react-redux';
+import * as actionsCreator from "../../redux/actions/index";
 
 const SearchSchema = Yup.object().shape({
   search: Yup.string()
@@ -28,14 +28,12 @@ const useStyles = makeStyles({
   }
 });
 
-function BookFinder() {
+function BookFinder(props) {
 
   const classes = useStyles();
 
   const submitForm = (values) => {
-    //onsubmit dipatch get books action
-    store.dispatch(actions.getBooks(values.search));
-    console.log(store.getState());
+    props.getBooks(values.search)
   };
 
   const renderForm = (props) =>{
@@ -109,6 +107,12 @@ function BookFinder() {
   );
 }
 
-export default BookFinder;
+function mapDispatchToProps(dispatch){
+  return{
+   getBooks : (value)=>dispatch(actionsCreator.getBooks(value))
+  }
+}
+export default connect(null,mapDispatchToProps)(BookFinder); 
+
 
 
