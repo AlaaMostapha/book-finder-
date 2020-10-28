@@ -1,23 +1,21 @@
 import * as actionTypes from '../../constants/actionTypes';
-
+//update state
 const INITIAL_STATE = [];
 export default function reducer(state=INITIAL_STATE, action) {
   switch(action.type) {
     case actionTypes.BOOKS_REUEST : {
       console.log(action,state)
       return [
-        ...state,
         {
           payload:action.payload
         }
       ]
     }
     case actionTypes.BOOKS_RESPONSE : {
-      
+      console.log(action,state)
       return [
-        ...state,
         {
-          payload:action.payload.value
+          books:action.payload
         }
       ];
     }

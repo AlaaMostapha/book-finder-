@@ -1,31 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Result_list.scss';
-import store from '../../redux/store/store';
-import * as actions from '../../redux/actions/index';
 
-function ResultList() {
-  let [BookList, setBookList] = useState([]);
+import {connect} from 'react-redux';
+import * as actionsCreator from '../../redux/actions/index';
+function ResultList(props) {
+  // let [BookList, setBookList] = useState([]);
 
-   function load(){
-        store.dispatch(actions.addBooks());
-         console.log(actions.addBooks());
-         console.log(store.getState())
-         BookList=store.getState()
-    setBookList(BookList)
-        //  this.setState({ books: store.getState() });
-         console.log(BookList)
-    } 
+  function load(){
+    // store.dispatch(actions.addBooks());
+    // console.log(actions.addBooks());
+    // console.log(store.getState())
+    // console.log(props.books)
+     console.log( props.books)
+     props.addBooks();
+      console.log( props.books)
+  } 
+  function createList(){
+    console.log( props.book)
+  }
  
-        return ( 
-            <React.Fragment>
-<button onClick={load}>
-  click
-</button>
-{/* {BookList.map(book=>(
-           <div key={book.payload}>{book}</div>
-         ))} */}
-            </React.Fragment>
-         );
-    }
-
-export default ResultList;
+  return ( 
+    <React.Fragment>
+        <button onClick={load}>
+        click
+        </button>
+        {createList()}
+      
+    </React.Fragment>
+  );
+}
+function mapStateToProps(state){
+  return{
+    books:state.books
+  }
+}
+function mapDispatchToProps(dispatch){
+  return{
+   addBooks : ()=>dispatch(actionsCreator.addBooks())
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(ResultList);
