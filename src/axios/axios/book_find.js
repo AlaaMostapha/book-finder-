@@ -1,6 +1,12 @@
-import axiosInstance from '../axios/book_find';
+import axios from 'axios';
 import * as Handlers from '../handlers/index';
 
+//create axios instance
+const axiosInstance = axios.create({
+  baseURL:"https://www.googleapis.com/"
+})
+
+//    INTERCEPTORS
 //request interceptor
 axiosInstance.interceptors.request.use(
  request => Handlers.requestHandler(request)
@@ -12,3 +18,5 @@ axiosInstance.interceptors.response.use(
   error => Handlers.errorHandler(error)
 );
 
+
+export default axiosInstance;
