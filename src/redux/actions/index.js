@@ -13,3 +13,17 @@ export const addBooks = response => ({
         books:response
     }
 });
+
+export const startLoading = value => ({
+    type:actionTypes.LOAD_START,
+    payload:{
+       loading:value
+    }
+});
+
+export const endLoading = value => ({
+    type: actionTypes.LOAD_END,
+    payload:{
+        loading:value
+    }
+});
