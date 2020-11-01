@@ -1,25 +1,10 @@
-import * as actionTypes from '../../constants/actionTypes';
-//update state
-const INITIAL_STATE = [];
-export default function reducer(state=INITIAL_STATE, action) {
-  switch(action.type) {
-    case actionTypes.BOOKS_REUEST : {
-      console.log(action,state)
-      return (
-        {
-          value:action.payload.value
-        }
-      )
-    }
-    case actionTypes.BOOKS_RESPONSE : {
-      console.log(action,state)
-      return (
-        {
-          books:action.payload.books
-        }
-      );
-    }
-   
-    default : return state;
-  }
-}
+import { combineReducers } from 'redux';
+import bookReducer from './book_reducer';
+import loadingReducer from './loading_reducer';
+ 
+const rootReducer = combineReducers({
+   bookReducer,
+   loadingReducer,
+});
+ 
+export default rootReducer;
