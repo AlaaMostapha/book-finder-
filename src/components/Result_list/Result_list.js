@@ -12,9 +12,9 @@ class  ResultList extends Component {
       if(this.props.books) { 
         return (this.props.books.items || []).map((book)=>{
          return(
-           <Grid item xs={3}>
+           <Grid item xs={3} key={book.id}>
              <Paper className="paper-custom">
-              <div key={book.id}>
+              <div>
                   <h3>{book.volumeInfo.title}</h3> 
                   <p>{book.kind}</p>
                   <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={book.kind}/>
