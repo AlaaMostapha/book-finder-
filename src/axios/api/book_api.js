@@ -1,5 +1,5 @@
 
-import axiosInstance from '../axios/book_find_axios';
+import axiosInstance from '../axios/book_find';
 const searchBookApi ="AIzaSyAXDdnulyGAc4aLzIcnIEuHzCm9iadGA6g";
 
 export const getBooksFromApi = async (params) => {
