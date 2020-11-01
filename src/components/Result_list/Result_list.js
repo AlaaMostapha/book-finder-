@@ -3,7 +3,7 @@ import './Result_list.scss';
 import {connect} from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-
+import LoadingIndicator from '../Loading_indicator/Loading_indicator';
 class  ResultList extends Component {
 
    createList(){   
@@ -30,6 +30,7 @@ class  ResultList extends Component {
   return ( 
     <React.Fragment>
       <Grid container spacing={2} alignItems="stretch" m="2rem">
+        <LoadingIndicator loading={this.props.loading}/>
         {this.createList()}
         </Grid>
     </React.Fragment>
@@ -40,7 +41,8 @@ function mapStateToProps(state){
   console.log(state)
    console.log(state.books)
   return{
-    books:state.books
+    books:state.bookReducer.books,
+    loading:state.loadingReducer
   }
 }
 // function mapDispatchToProps(dispatch){
