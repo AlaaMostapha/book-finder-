@@ -10,7 +10,7 @@ function App() {
     <Provider store={store}>
     <div className="App">
       <BookFinder/>
-      <Suspense fallback={<div>Loading.......</div>}>
+      <Suspense fallback={<div>Welcome.......</div>}>
         <LazyResultListComponent/>
       </Suspense>
    
