@@ -3,7 +3,7 @@ import * as actionTypes from '../../constants/actionTypes';
 const INITIAL_STATE = false;
 export default function loadingReducer(state=INITIAL_STATE, action) {
   switch(action.type) {
-    case actionTypes.LOAD_START : {
+    case actionTypes.LOADING : {
       console.log(action,state)
       return (
         {
@@ -11,14 +11,7 @@ export default function loadingReducer(state=INITIAL_STATE, action) {
         }
       )
     }
-    case actionTypes.LOAD_END : {
-      console.log(action,state)
-      return (
-        {
-          loading:action.payload.loading
-        }
-      );
-    }
+  
    
     default : return state;
   }
