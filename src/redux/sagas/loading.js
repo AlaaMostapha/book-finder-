@@ -1,19 +1,21 @@
 // import { call ,put} from 'redux-saga/effects';
-// import {startLoading,endLoading} from '../actions/index'
+// import * as actions from '../actions/index'
 // // const HN_BASE_URL = 'http://hn.algolia.com/api/v1/search?query=';
  
 // // const fetchStories = query =>
 // //   fetch(HN_BASE_URL + query)
 // //     .then(response => response.json());
  
-// function* loading(action) {
+// function* handlLoading(action) {
 //   console.log(action)
-//  yield call(startLoading("true"))
+//   //  yield call(actions.loading(action.payload.loading))
+//    yield call(actions.loading,action.payload.loading)
+ 
 //   // console.log(response);
 //   //  console.log(response.data);
-// //    yield put(endLoading(response));
+// //    yield put(actions.addBooks(response.data));
 // }
  
 // export {
-//   loading,
+//   handlLoading,
 // };
