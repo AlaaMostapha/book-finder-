@@ -14,16 +14,9 @@ export const addBooks = response => ({
     }
 });
 
-export const startLoading = value => ({
-    type:actionTypes.LOAD_START,
+export const loading = value => ({
+    type:actionTypes.LOADING,
     payload:{
        loading:value
-    }
-});
-
-export const endLoading = value => ({
-    type: actionTypes.LOAD_END,
-    payload:{
-        loading:value
     }
 });
