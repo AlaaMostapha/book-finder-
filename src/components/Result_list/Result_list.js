@@ -1,9 +1,11 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React,{Component} from 'react';
 import './Result_list.scss';
 import {connect} from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import LoadingIndicator from '../Loading_indicator/Loading_indicator';
+// import CircularUnderLoad from '../MaterialUi_loader/MaterialUi_loader';
 class  ResultList extends Component {
 
    createList(){   
@@ -31,13 +33,15 @@ class  ResultList extends Component {
  render() { 
   return ( 
     <React.Fragment>
+        {/* <CircularUnderLoad/> */}
        {/* {if(this.state.loading) return <LoadingIndicator/>}; */}
-       <LoadingIndicator/>
-       {(this.props.loading) ? <LoadingIndicator/>:null}
+      
+       {(this.props.loading) ?  <LoadingIndicator/>:
+        <Grid container spacing={2} alignItems="stretch" m="2rem">
+          {this.createList()}
+        </Grid>}
 
-      <Grid container spacing={2} alignItems="stretch" m="2rem">
-        {this.createList()}
-        </Grid>
+      
     </React.Fragment>
   );
   }
