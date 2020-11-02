@@ -9,8 +9,9 @@ class  ResultList extends Component {
    createList(){   
       console.log( this.props)
       console.log(this.props.books)
-      if(this.props.books) { 
-        return (this.props.books.items || []).map((book)=>{
+      const {books}=this.props
+      if(books) { 
+        return (books.items || []).map((book)=>{
          return(
            <Grid item xs={3} key={book.id}>
              <Paper className="paper-custom">
@@ -29,8 +30,8 @@ class  ResultList extends Component {
  render() { 
   return ( 
     <React.Fragment>
+        <LoadingIndicator/>
       <Grid container spacing={2} alignItems="stretch" m="2rem">
-        <LoadingIndicator loading={this.props.loading}/>
         {this.createList()}
         </Grid>
     </React.Fragment>
@@ -39,10 +40,9 @@ class  ResultList extends Component {
 }
 function mapStateToProps(state){
   console.log(state)
-   console.log(state.books)
+  //  console.log(state.bookReducer)
   return{
     books:state.bookReducer.books,
-    loading:state.loadingReducer
   }
 }
 // function mapDispatchToProps(dispatch){
