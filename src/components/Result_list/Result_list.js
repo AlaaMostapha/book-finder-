@@ -7,9 +7,9 @@ import LoadingIndicator from '../Loading_indicator/Loading_indicator';
 class  ResultList extends Component {
 
    createList(){   
-      console.log( this.props)
-      console.log(this.props.books)
+      console.log(this.props)
       const {books}=this.props
+      console.log(books)
       if(books) { 
         return (books.items || []).map((book)=>{
          return(
@@ -27,10 +27,14 @@ class  ResultList extends Component {
       }
       
   }
+
  render() { 
   return ( 
     <React.Fragment>
-        <LoadingIndicator/>
+       {/* {if(this.state.loading) return <LoadingIndicator/>}; */}
+       <LoadingIndicator/>
+       {(this.props.loading) ? <LoadingIndicator/>:null}
+
       <Grid container spacing={2} alignItems="stretch" m="2rem">
         {this.createList()}
         </Grid>
@@ -43,6 +47,7 @@ function mapStateToProps(state){
   //  console.log(state.bookReducer)
   return{
     books:state.bookReducer.books,
+    loading:state.loadingReducer.loading
   }
 }
 // function mapDispatchToProps(dispatch){
