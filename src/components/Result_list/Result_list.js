@@ -17,7 +17,7 @@ class  ResultList extends Component {
               <div>
                   <h3>{book.volumeInfo.title}</h3> 
                   <p>{book.kind}</p>
-                  <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={book.kind}/>
+                  {book.volumeInfo.imageLinks? <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={book.volumeInfo.title}/>:""}
                 </div>
             </Paper>
             </Grid>
