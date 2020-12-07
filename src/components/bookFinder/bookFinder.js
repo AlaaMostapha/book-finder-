@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import TextField from "@material-ui/core/TextField";
@@ -7,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import "./bookFinder.scss";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actionsCreator from "../../redux/actions/index";
 
 const SearchSchema = Yup.object().shape({
@@ -20,7 +19,6 @@ const initialValues = {
 };
 const useStyles = makeStyles({
   btn: {
-    // padding: '0 30px',
     margin: "5px",
   },
   textCenter: {
@@ -30,13 +28,13 @@ const useStyles = makeStyles({
 
 function BookFinder(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const submitForm = (values) => {
-    props.getBooks(values.search);
+    dispatch(actionsCreator.getBooks(values.search));
   };
 
   const renderForm = (props) => {
-    // console.log(props);
     const {
       handleSubmit,
       handleChange,
@@ -109,9 +107,4 @@ function BookFinder(props) {
   );
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    getBooks: (value) => dispatch(actionsCreator.getBooks(value)),
-  };
-}
-export default connect(null, mapDispatchToProps)(BookFinder);
+export default BookFinder;

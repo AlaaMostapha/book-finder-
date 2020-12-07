@@ -6,8 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import LoadingIndicator from "../loadingIndicator/loadingIndicator";
 import { useSelector } from "react-redux";
 function ResultList() {
-  const books = useSelector((state) => state.bookReducer.books);
-  const loading = useSelector((state) => state.loadingReducer.loading);
+  const books = useSelector((state) => state.books);
+  const loading = useSelector((state) => state.loading);
   const createList = () => {
     if (books) {
       return (books.items || []).map((book) => {
